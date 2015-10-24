@@ -18,9 +18,19 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    if a <= 0 or b <= 0 or c <= 0:
+        raise TriangleError('Length cannot be negative')
 
+    if a+b <= c or b+c <= a or a+c <= b:
+        raise TriangleError('Three sides must correspond')
+
+    if a == b or b == c or a == c:
+        if a == b and b == c:
+            return 'equilateral'
+        else:
+            return 'isosceles'
+
+    return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(StandardError):
