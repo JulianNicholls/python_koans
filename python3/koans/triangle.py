@@ -17,12 +17,13 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    if a == b:
-        if a == c:
-            return 'equilateral'
-        else:
-            return 'isosceles'
-    elif b == c or a == c:
+    if a < 1 or b < 1 or c < 1 or \
+       b+c <= a or a+c <= b or a+b <= c:
+        raise TriangleError
+
+    if a == b and b == c:
+        return 'equilateral'
+    elif a == b or b == c or a == c:
         return 'isosceles'
 
     return 'scalene'
